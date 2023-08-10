@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <style>
+        body{
+            /* background-color: #005d97; */
+            /* color: #fff; */
+            width: 100vw;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        #pruebas{
+            border-radius: 7px;
+            background-color: #fff;
+            color: #000;
+            width: auto;
+            height: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: prueba 10s infinite;
+        }
+        @keyframes prueba{
+            0%, 100%{
+                background-color: #fff;
+                transform: rotateX(0deg);
+                perspective: 1000px;
+                transform-style: preserve-3d;
+            }
+            50%{
+                background-color: #000;
+                transform: rotateX(360deg);
+                perspective: 1000px;
+                transform-style: preserve-3d;
+            }
+        }
+        .animated-scene{
+            animation: escena 10s infinite;
+        }
+    </style>
+</head>
+<body>
+    <div id="word"></div>
+    <h1 class="display-1">Estas son mis pruebas</h1>
+    <br><br>
+    <div id="pruebas"></div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script>
+    const word = document.getElementById('word');
+    const body = document.querySelector('body');
+    const listWord = ['hola', 'mundo', 'como', 'estas', 'hoy', 'dia', 'de', 'hoy'];
+    const text = 'hola';
+
+    function creatingDivs(word){
+        const prueba= document.createElement('div');
+        word=word.replace('a','A');
+        word=word.slice(1,3);
+        prueba.innerHTML = word;
+        prueba.classList.add('p-3');
+        prueba.classList.add('m-3');
+        prueba.classList.add('bg-primary');
+        prueba.classList.add('text-white');
+        prueba.classList.add('rounded');
+        prueba.classList.add('text-center');
+        prueba.classList.add('fs-1');
+        prueba.classList.add('fw-bold');
+        prueba.classList.add('shadow');
+        prueba.classList.add('rounded');
+        prueba.classList.add('border');
+        prueba.classList.add('border-3');
+        prueba.classList.add('border-dark');
+        pruebas.appendChild(prueba);
+    }
+    listWord.forEach(creatingDivs);
+    function changingBackground(){
+        const estilo = document.createElement('style');
+        const escena=`
+            body{
+                animation: cambioEscena 10s infinite;
+            }
+            @keyframes cambioEscena{
+                0%, 100%{
+                    background-color: yellow;
+                }
+                50%{
+                    background-color: red;
+                }
+            }
+        `;
+        estilo.innerHTML = escena;
+        document.head.appendChild(estilo);
+    }
+    changingBackground();
+    // //replace
+    // prueba.innerHTML = text.replace('h', 'H');
+    // //slice
+    // prueba.innerHTML = text.slice(1, 3);
+    // //substr
+    // prueba.innerHTML = text.substr(1, 3);
+</script>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="showing"></div>
+    <div id="response"></div>
+    <div id="listacorrecta"></div>
+    <div id="listaincorrecta"></div>
+</body>
+<script>
+    const showing = document.getElementById('showing');
+    const response=document.getElementById('response');
+    const listacorrecta=document.getElementById('listacorrecta');
+    const listaincorrecta=document.getElementById('listaincorrecta');
+    const words = ['hola', 'adios', 'buenas', 'tardes', 'noches'];
+    const randomWord = words[Math.floor(Math.random() * words.length)];
+    var correctWord=['a'];
+    var incorrectWord=[];
+    showing.innerHTML =`
+        ${
+            randomWord.split('').map(
+                letter=>`
+                    <span>${correctWord.includes(letter)?letter:[]}</span>
+                `
+            ).join('')
+        }
+    `;
+    window.addEventListener('keydown',(e)=>{
+        if(
+            e.key==='a'||
+            e.key==='b'||
+            e.key==='c'||
+            e.key==='d'||
+            e.key==='e'||
+            e.key==='f'||
+            e.key==='g'||
+            e.key==='h'||
+            e.key==='i'||
+            e.key==='j'||
+            e.key==='k'||
+            e.key==='l'||
+            e.key==='m'||
+            e.key==='n'||
+            e.key==='ñ'||
+            e.key==='o'||
+            e.key==='p'||
+            e.key==='q'||
+            e.key==='r'||
+            e.key==='s'||
+            e.key==='t'||
+            e.key==='u'||
+            e.key==='v'||
+            e.key==='w'||
+            e.key==='x'||
+            e.key==='y'||
+            e.key==='z'
+        ){
+            console.log(e.key,randomWord);
+            if(randomWord.includes(e.key)){
+                correctWord.push(e.key);
+                listacorrecta.innerHTML =`
+                    ${
+                        randomWord.split('').map(
+                            letter=>`
+                                <span>${correctWord.includes(letter)?letter:[]}</span>
+                            `
+                        ).join('')
+                    }
+                `;
+                if(randomWord===correctWord.join('')){
+                    response.innerHTML='correcto';
+                }
+            }else{
+                incorrectWord.push(e.key);
+                listaincorrecta.innerHTML='incorrecto';
+            }
+        }
+    })
+</script>
+</html>

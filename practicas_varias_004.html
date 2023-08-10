@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="prueba"></div>
+    <div id="respues"></div>
+</body>
+<script>
+    const pruebaEl=document.getElementById('prueba');
+    const respuesEl=document.getElementById('respues');
+    const text='hola';
+    pruebaEl.innerHTML=text
+        .split('')
+        .join('');
+    ;
+    const innerWord=pruebaEl.innerText.replace(/\n/g, '');
+    if(innerWord===text){
+        respuesEl.innerHTML='correcto';
+    }else{
+        respuesEl.innerHTML='incorrecto';
+    }
+</script>
+</html>
